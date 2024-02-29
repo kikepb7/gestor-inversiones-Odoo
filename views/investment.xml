@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="investment_list_action">
+            <field name="name">Inversiones</field>
+            <field name="res_model">investment.investment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Introduce la primera inversión</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="transaction_list_action">
+            <field name="name">Transacciones</field>
+            <field name="res_model">investment.transaction</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Introduce la primera transacción</p>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="portfolio_list_action">
+            <field name="name">Portfolio</field>
+            <field name="res_model">investment.portfolio</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea tu primer portfolio</p>
+            </field>
+        </record>
+
+
+        <menuitem id="main_investment_menu" name="Gestor de inversiones" action="investment_list_action"/>
+        <menuitem id="investment_menu" name="Inversiones" parent="main_investment_menu"
+                  action="investment_list_action"/>
+        <menuitem id="transactions_menu" name="Transacciones" parent="main_investment_menu"
+                  action="transaction_list_action"/>
+        <menuitem id="portfolio_menu" name="Portfolio" parent="main_investment_menu" action="portfolio_list_action"/>
+
+        <record model="ir.ui.view" id="investment_tree_view">
+            <field name="name">investment.tree</field>
+            <field name="model">investment.investment</field>
+            <field name="arch" type="xml">
+                <tree string="Todas las acciones">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="image"/>
+                    <field name="amount"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="investment_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="investment_form_view">
+            <field name="name">investment.form</field>
+            <field name="model">investment.investment</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de la inversión">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="image"/>
+                            <field name="amount"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="investment_type"/>
+                        </group>
+                        <notebook>
+                            <page string="Descripción">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

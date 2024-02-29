@@ -1,0 +1,13 @@
+<odoo>
+<!--    <data>-->
+<!--        <record id="object0" model="investment.invest">-->
+<!--            <field name="name">Inversión en renta fija</field>-->
+<!--            <field name="description">Inversiones en renta fija para maximizar tus ahorros</field>-->
+<!--        </record>-->
+
+<!--        <record id="object1" model="investment.invest">-->
+<!--            <field name="name">Inversión en renta variable</field>-->
+<!--            <field name="description">Inversiones en renta variable para maximizar tus ahorros</field>-->
+<!--        </record>-->
+<!--    </data>-->
+</odoo>
