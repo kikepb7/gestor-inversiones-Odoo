@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "investment",
+    'name': "Investments",
 
     'summary': """
         Empresa de inversiones para rentabilizar tus ahorros""",

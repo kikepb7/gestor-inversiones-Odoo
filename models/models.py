@@ -13,7 +13,7 @@ class Investment(models.Model):
 
     name = fields.Char(string='Nombre', required=True, help='Nombre de la inversión')
     description = fields.Text(help='Descripción de la inversión')
-    image = fields.Binary(string='Logo de la empresa')
+    image = fields.Image(string='Logo de la empresa')
     amount = fields.Integer(string='Cantidad de acciones', help='Cantidad de dinero invertida')
     market_price = fields.Float(string='Precio de mercado', help='Precio en el que cotiza actualmente')
     start_date = fields.Date(string='Fecha de inicio', help='Fecha de inicio de la inversión')
@@ -88,5 +88,5 @@ class Portfolio(models.Model):
         default='medium'
     )
 
-    investment_ids = fields.Many2many(comodel_name='investment.investment', string='Inversiones')
+    investment_ids = fields.Many2many(comodel_name='investment.investment', string='Inversiones', limit=10)
     transaction_ids = fields.Many2many(comodel_name='investment.transaction', string='Transacciones')

@@ -36,6 +36,8 @@
                   action="transaction_list_action"/>
         <menuitem id="portfolio_menu" name="Portfolio" parent="main_investment_menu" action="portfolio_list_action"/>
 
+
+        <!--QUÉ SE MUESTRA EN EL MENÚ DE CADA APARTADO-->
         <record model="ir.ui.view" id="investment_tree_view">
             <field name="name">investment.tree</field>
             <field name="model">investment.investment</field>
@@ -43,7 +45,7 @@
                 <tree string="Todas las acciones">
                     <field name="name"/>
                     <field name="description"/>
-                    <field name="image"/>
+                    <field name="image" widget="image" options="{'size': [150,150]}"/>
                     <field name="amount"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
@@ -52,6 +54,71 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="portfolio_tree_view">
+            <field name="name">investment.tree</field>
+            <field name="model">investment.portfolio</field>
+            <field name="arch" type="xml">
+                <tree string="Todos los portfolios">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="total_value"/>
+                    <field name="time_horizon"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="transaction_tree_view">
+            <field name="name">investment.tree</field>
+            <field name="model">investment.transaction</field>
+            <field name="arch" type="xml">
+                <tree string="Todas las transacciones">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="date"/>
+                    <field name="value"/>
+                    <field name="transaction_type"/>
+                    <field name="taxes"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--SEARCHVIEW-->
+        <record model="ir.ui.view" id="investment_search_view">
+            <field name="name">investment.search</field>
+            <field name="model">investment.investment</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="portfolio_search_view">
+            <field name="name">portfolio.search</field>
+            <field name="model">investment.portfolio</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="transaction_search_view">
+            <field name="name">transaction.search</field>
+            <field name="model">investment.transaction</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!--DESCRIPCIÓN DE CADA ELEMENTO-->
         <record model="ir.ui.view" id="investment_form_view">
             <field name="name">investment.form</field>
             <field name="model">investment.investment</field>
@@ -63,13 +130,79 @@
                             <field name="description"/>
                             <field name="image"/>
                             <field name="amount"/>
+                            <field name="market_price"/>
                             <field name="start_date"/>
                             <field name="end_date"/>
+                            <field name="profit"/>
+                            <field name="risk"/>
                             <field name="investment_type"/>
+                            <field name="expected_profit"/>
+                            <field name="total_investment"/>
+                            <field name="user_id"/>
                         </group>
                         <notebook>
                             <page string="Descripción">
                                 <field name="description"/>
+                            </page>
+                            <page string="Beneficio - Pérdida">
+                                <field string="Beneficio" name="profit" widget="percentpie"/>
+                                <field string="Riesgo" name="risk" widget="percentpie"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="portfolio_form_view">
+            <field name="name">investment.form</field>
+            <field name="model">investment.portfolio</field>
+            <field name="arch" type="xml">
+                <form string="Portfolio">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="total_value"/>
+                            <field name="investment_objetive"/>
+                            <field name="time_horizon"/>
+                            <field name="investment_ids"/>
+                        </group>
+                        <notebook>
+                            <page string="Descripción">
+                                <field name="description"/>
+                            </page>
+                            <page string="Transacciones">
+                                <field name="transaction_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="transaction_form_view">
+            <field name="name">investment.form</field>
+            <field name="model">investment.transaction</field>
+            <field name="arch" type="xml">
+                <form string="Transaction">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="date"/>
+                            <field name="value"/>
+                            <field name="transaction_type"/>
+                            <field name="commissions"/>
+                            <field name="taxes"/>
+                            <field name="investment_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Descripción">
+                                <field name="description"/>
+                            </page>
+                            <page string="Contraparte">
+                                <field name="partner_ids"/>
                             </page>
                         </notebook>
                     </sheet>
