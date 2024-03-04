@@ -14,7 +14,7 @@ class Investment(models.Model):
     name = fields.Char(string='Nombre', required=True, help='Nombre de la inversión')
     description = fields.Text(help='Descripción de la inversión')
     image = fields.Image(string='Logo de la empresa')
-    amount = fields.Integer(string='Cantidad de acciones', help='Cantidad de dinero invertida')
+    amount = fields.Float(string='Cantidad de acciones', help='Cantidad de dinero invertida')
     market_price = fields.Float(string='Precio de mercado', help='Precio en el que cotiza actualmente')
     start_date = fields.Date(string='Fecha de inicio', help='Fecha de inicio de la inversión')
     end_date = fields.Date(string='Fecha de vencimiento', help='Fecha de finalización de la inversión')
